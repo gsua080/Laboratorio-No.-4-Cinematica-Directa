@@ -65,19 +65,20 @@ La solución se encapsula en una clase que extiende de rclpy.node.Node, permitie
 ## Diagrama de flujo de acciones del robot 
 ```mermaid
 graph TD
-    Inicio[Inicio del programa] --> GUI[Selección de pose en GUI]
-    GUI --> Validar[Validar límites articulares]
+    Inicio[Inicio del programa] --> GUI[Seleccion de pose en GUI]
+    GUI --> Validar[Validar limites articulares]
     Validar --> Convertir[Convertir grados a bits]
-    Convertir --> Enviar1[Enviar comando a articulación 1 (base)]
+    Convertir --> Enviar1[Enviar a articulacion 1 (base)]
     Enviar1 --> Esperar1[Esperar]
-    Esperar1 --> Enviar2[Enviar a articulación 2 (hombro)]
+    Esperar1 --> Enviar2[Enviar a articulacion 2 (hombro)]
     Enviar2 --> Esperar2[Esperar]
-    Esperar2 --> Enviar3[Enviar a articulación 3 (codo)]
+    Esperar2 --> Enviar3[Enviar a articulacion 3 (codo)]
     Enviar3 --> Esperar3[Esperar]
-    Esperar3 --> Enviar4[Enviar a articulación 4 (muñeca)]
-    Enviar4 --> Leer[Leer posición actual de articulaciones]
-    Leer --> Visualizar[Visualizar configuración en GUI]
+    Esperar3 --> Enviar4[Enviar a articulacion 4 (muneca)]
+    Enviar4 --> Leer[Leer posicion actual]
+    Leer --> Visualizar[Visualizar configuracion en GUI]
     Visualizar --> Fin[Fin]
+
 
 ```
 ## Plano de planta de la ubicaci´on de cada uno de los elementos.
