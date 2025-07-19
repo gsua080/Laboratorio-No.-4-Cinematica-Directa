@@ -63,6 +63,21 @@ Esta interfaz también puede usarse para tomar capturas o grabar videos de prueb
 La solución se encapsula en una clase que extiende de rclpy.node.Node, permitiendo su ejecución como un nodo ROS. Aunque el enfoque fue directo y no se usaron controladores avanzados como joint_trajectory_controller, el diseño modular permite escalar fácilmente a una integración más completa en ROS.
 
 ## Diagrama de flujo de acciones del robot 
+graph TD
+    Inicio[Inicio del programa] --> GUI[Selección de pose en GUI]
+    GUI --> Validar[Validar límites articulares]
+    Validar --> Convertir[Convertir grados a bits]
+    Convertir --> Enviar1[Enviar comando a articulación 1 (base)]
+    Enviar1 --> Esperar1[Esperar]
+    Esperar1 --> Enviar2[Enviar a articulación 2 (hombro)]
+    Enviar2 --> Esperar2[Esperar]
+    Esperar2 --> Enviar3[Enviar a articulación 3 (codo)]
+    Enviar3 --> Esperar3[Esperar]
+    Esperar3 --> Enviar4[Enviar a articulación 4 (muñeca)]
+    Enviar4 --> Leer[Leer posición actual de articulaciones]
+    Leer --> Visualizar[Visualizar configuración en GUI]
+    Visualizar --> Fin[Fin]
+
 
 ## Plano de planta de la ubicaci´on de cada uno de los elementos.
 ## Descripción de las funciones utilizadas.
