@@ -130,8 +130,11 @@ flowchart TD
 ## Plano de planta de la ubicación de los elementos
 
 Se diseñó una estación de trabajo donde el Phantom X Pincher está fijo sobre una base de madera al centro de la mesa. La fuente de alimentación se encuentra lateralmente, conectada al controlador, y la laptop con ROS 2 se ubica al costado del operador. Una cámara frontal registra los movimientos del robot.
-![Ver plano de planta del robot en PDF](plano/Base-Pincher_phantom_X.pdf)
+
+📄 [Ver plano de planta del robot en PDF](plano/Base-Pincher_phantom_X.pdf)
+
 ![Plano Phantom X](plano/plano_pincher.png)
+
 
 
 ## Descripción de las funciones utilizadas.
