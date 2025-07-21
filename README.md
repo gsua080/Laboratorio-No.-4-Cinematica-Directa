@@ -15,6 +15,10 @@ Correo: jugongorar@unal.edu.co
 
 Correo: gesuarezb@unal.edu.co
 ## Descripción de la solución planteada
+<div align="center">
+  <img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/59990b77-5efd-49c9-97cc-5af415d07f76" />
+</div>
+
 
 ```mermaid
 graph TD
@@ -44,7 +48,9 @@ Para  la solución plantada se combinaron herramientas de control de hardware, v
 | 5 | θ₅            | 0       | 9.12    | 0        |
 
 
-<img width="310" height="780" alt="image" src="https://github.com/user-attachments/assets/6a8daac1-e9f8-4cad-a0cc-6ae6bf4ae4b1" />
+<div align="center">
+  <img width="310" height="780" alt="image" src="https://github.com/user-attachments/assets/6a8daac1-e9f8-4cad-a0cc-6ae6bf4ae4b1" />
+</div>
 
 
 ### Componentes principales
@@ -93,6 +99,33 @@ graph TD
     Visualizar --> Fin[Fin]
 
 
+```
+### Diagrama de fluijo del GUI
+
+```mermaid
+flowchart TD
+    A[Inicio del programa] --> B[Crear GUI]
+    B --> C[Esperar interacción del usuario]
+
+    C --> D{¿Usuario seleccionó una pose?}
+    D -- Sí --> E[Obtener ángulos de la pose]
+    E --> F{¿Ángulos dentro de límites?}
+    F -- Sí --> G[Convertir grados a bits]
+    G --> H[Enviar comando al motor]
+    H --> I[Esperar 0.5 s y continuar con siguiente motor]
+    I --> J[Graficar pose]
+    J --> L[Actualizar GUI]
+    F -- No --> K[Mostrar advertencia en consola]
+    K --> C
+
+    D -- No --> M{¿Usuario presionó 'Leer posición actual'?}
+    M -- Sí --> N[Leer bits desde motores]
+    N --> O[Convertir a grados]
+    O --> P[Actualizar etiquetas]
+    P --> Q[Graficar configuración]
+    Q --> C
+
+    M -- No --> C
 ```
 ## Plano de planta de la ubicación de cada uno de los elementos.
 ## Descripción de las funciones utilizadas.
@@ -159,12 +192,6 @@ Construye toda la ventana gráfica usando `tkinter`, incluyendo:
 
 #### `main()`
 Inicializa el nodo ROS 2, ejecuta la lógica de la clase `ArticulationController`, y al finalizar la ejecución, cierra correctamente el nodo. 
+## Vídeo
 
-
-
-## Código del script utilizado para el desarrollo de la práctica.
-## Vídeo del brazo alcanzando cada posición solicitada.
-## Vídeo demostración de uso de la interfaz de usuario.
-## Los videos debe comenzar con la introducci´on oficial del laboratorio LabSIR Intro LabSIR.
-## Gráfica digital de las poses compar´andola con la fotograf´ıa del brazo real en la misma configuraci´on.
 
