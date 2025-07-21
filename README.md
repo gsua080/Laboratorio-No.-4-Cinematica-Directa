@@ -1,4 +1,4 @@
-# Laboratorio No 4 Cinematica Directa
+<img width="810" height="1280" alt="image" src="https://github.com/user-attachments/assets/6a8daac1-e9f8-4cad-a0cc-6ae6bf4ae4b1" /># Laboratorio No 4 Cinematica Directa
 **Juliana Gongora Rasmussen**
 
 
@@ -33,6 +33,17 @@ graph TD
 
 ```
 Para  la solución plantada se combinaron herramientas de control de hardware, visualización gráfica e interacción de usuario para operar el manipulador Phantom X Pincher utilizando ROS 2, Python y servomotores Dynamixel. El objetivo fue desarrollar un sistema completo que permitiera enviar comandos de posición, visualizar el estado articular del robot y graficar su configuración desde una interfaz intuitiva.
+## Tabla DH 
+
+| i | θᵢ (variable) | dᵢ (cm) | aᵢ (cm) | αᵢ (rad) |
+|---|---------------|---------|---------|----------|
+| 1 | θ₁            | 11.04   | 0       | π/2      |
+| 2 | θ₂            | 0       | 10.3    | 0        |
+| 3 | θ₃            | 0       | 10.33   | 0        |
+| 4 | θ₄            | 0       | 9.12    | 0        |
+| 5 | θ₅            | 0       | 9.12    | 0        |
+
+
 
 ### Componentes principales
 Control directo con Dynamixel SDK
@@ -81,9 +92,75 @@ graph TD
 
 
 ```
-## Plano de planta de la ubicaci´on de cada uno de los elementos.
+## Plano de planta de la ubicación de cada uno de los elementos.
 ## Descripción de las funciones utilizadas.
-## Código del script utilizado para el desarrollo de la pr´actica.
+El sistema está compuesto por varias funciones y métodos que trabajan juntos para controlar de forma segura el robot, leer sus posiciones en tiempo real y mostrar visualmente cómo se está moviendo.
+
+A continuación, se describen las funciones principales del código.
+---
+
+### Funciones de conversión y visualización
+
+#### deg_to_bits(deg)
+Esta función transforma un ángulo en grados a su valor equivalente en bits, siendo esta la escala que entienden los motores Dynamixel, esto es  necesario porque los comandos que se envían al hardware no aceptan directamente valores angulares en grados.
+
+#### bits_to_deg(bits)
+Realiza la conversión inversa que "deg_to_bits", toma un valor en bits leído desde el motor y lo traduce nuevamente a grados, facilitando la visualización y comprensión de la posición real del actuador.
+
+#### graficar_robot(q)
+Permite visualizar la configuración del manipulador en un plano 2D, utilizando la biblioteca `matplotlib`. Recibe como entrada un conjunto de ángulos articulares y genera una gráfica que simula la posición del brazo. 
+
+---
+
+###  Métodos de la clase `ArticulationController`
+
+#### __init__(self)
+Es el método constructor de la clase. Se encarga de:
+
+- Configurar la conexión con los motores 
+- Habilitar el torque para permitir el movimiento
+- Inicializar variables internas para guardar posiciones articulares
+- Llamar a `create_gui()` para generar la interfaz gráfica de usuario 
+
+#### move_to_pose(self, pose_name)
+Permite mover el robot hacia una de las cinco poses definidas. El flujo incluye:
+
+- Obtener los ángulos asociados a la pose seleccionada.
+- Verificar que cada ángulo esté dentro de los límites permitidos para cada articulación.
+- Convertir cada ángulo a bits.
+- Enviar los comandos a cada motor uno a uno, con una pausa intermedia para permitir observar el movimiento.
+- Graficar la nueva configuración del robot.
+
+
+#### read_angles(self)
+Consulta a cada motor cuál es su posición actual, transforma esos valores a grados y los guarda para ser visualizados en pantalla. Además, genera la gráfica del estado actual. Esta función permite conocer la posición actual del robot de manera grafica.
+
+#### update_joint_labels(self)
+Actualiza los textos de la interfaz gráfica que muestran los valores actuales de cada articulación. Esto permite al usuario monitorear en tiempo real los ángulos del robot.
+
+---
+
+### Funciones de interfaz gráfica
+
+#### `create_gui(self)`
+Construye toda la ventana gráfica usando `tkinter`, incluyendo:
+
+- Encabezado con el nombre del curso y integrantes
+- Carga del logo 
+- Botones para seleccionar las cinco poses disponibles
+- Botón para leer la posición actual del brazo
+- Área donde se muestran los valores articulares actuales
+
+---
+
+### Función principal
+
+#### `main()`
+Inicializa el nodo ROS 2, ejecuta la lógica de la clase `ArticulationController`, y al finalizar la ejecución, cierra correctamente el nodo. 
+
+
+
+## Código del script utilizado para el desarrollo de la práctica.
 ## Vídeo del brazo alcanzando cada posición solicitada.
 ## Vídeo demostración de uso de la interfaz de usuario.
 ## Los videos debe comenzar con la introducci´on oficial del laboratorio LabSIR Intro LabSIR.
