@@ -200,5 +200,6 @@ Construye toda la ventana gráfica usando `tkinter`, incluyendo:
 #### `main()`
 Inicializa el nodo ROS 2, ejecuta la lógica de la clase `ArticulationController`, y al finalizar la ejecución, cierra correctamente el nodo. 
 ## Vídeo
+https://drive.google.com/drive/folders/1LGBzw-y9EbNV-nAtIFC8eFqtoEeN-dte?usp=sharing
 
 
