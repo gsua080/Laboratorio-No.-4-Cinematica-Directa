@@ -1,4 +1,4 @@
-<img width="810" height="1280" alt="image" src="https://github.com/user-attachments/assets/6a8daac1-e9f8-4cad-a0cc-6ae6bf4ae4b1" /># Laboratorio No 4 Cinematica Directa
+# Laboratorio No 4 Cinematica Directa
 **Juliana Gongora Rasmussen**
 
 
@@ -44,7 +44,7 @@ Para  la solución plantada se combinaron herramientas de control de hardware, v
 | 5 | θ₅            | 0       | 9.12    | 0        |
 
 
-
+<img width="310" height="780" alt="image" src="https://github.com/user-attachments/assets/6a8daac1-e9f8-4cad-a0cc-6ae6bf4ae4b1" />
 ### Componentes principales
 Control directo con Dynamixel SDK
 Se utilizó la biblioteca oficial de Dynamixel (dynamixel_sdk) para establecer comunicación con los servomotores AX-12 a través del puerto /dev/ttyUSB0. El script inicializa cada motor, activa el torque y permite enviar comandos en tiempo real.
